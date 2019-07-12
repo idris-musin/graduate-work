@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head data-th-replace="fragments/layout :: headFragment(title=${title})"></head>
+<body>
+
+<div data-th-replace="fragments/layout :: navbarFragment"></div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-10">
+
+            <h5>Контакты</h5>
+
+            <p>Адрес офиса в городе Казань:</p>
+
+            <p>ул. Баумана, д.35, оф. 404</p>
+
+            <p>Телефоны:</p>
+
+            <p>8-987-111-11-11</p>
+            <p>8-843-244-44-44</p>
+
+        </div>
+
+        <div class="col">
+            <h5>Личный кабинет</h5>
+
+            <form
+                    data-th-if="${#authorization.expression('isAuthenticated()')}"
+                    data-th-action="@{/logout}" method="post">
+                <button>Выйти</button>
+            </form>
+
+            <a data-th-if="${#authorization.expression('isAnonymous()')}"
+               data-th-href="@{/register}">Регистрация</a>
+
+            <a data-th-if="${#authorization.expression('isAnonymous()')}"
+               data-th-href="@{/login}">Войти</a>
+
+            <!-- когда проверяете hasRole префикс ROLE_ не пишется -->
+            <!-- в authority -> ROLE_ADMIN -->
+            <a data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}"
+               data-th-href="@{/admin}">Панель управления</a>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

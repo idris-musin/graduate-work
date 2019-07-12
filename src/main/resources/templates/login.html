@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ru">
+<head data-th-replace="fragments/layout :: headFragment(title=${title})"></head>
+<body>
+
+<div data-th-if="error">
+    [[ ${error} ]]
+</div>
+<div data-th-if="register">
+    Вы успешно зарегистрировались. Войдите, используя ваш логин и пароль.
+</div>
+<form data-th-action="@{/login}" method="post">
+    <input name="username" placeholder="Логин" required>
+    <input name="password" type="password" placeholder="Пароль" required>
+    <button>Вход</button>
+</form>
+
+</body>
+</html>
