@@ -37,7 +37,7 @@ public class GraduateWorkApplication {
             repository.save(
                     new User(
                             0,
-                            "vasya",
+                            "idris",
                             passwordEncoder.encode("password"),
                             List.of(new SimpleGrantedAuthority("ROLE_USER")),
                             true,
