@@ -1,16 +1,17 @@
 language: java
 
-jdk: openjdk12
+jdk: oraclejdk12
+
+script: ./mvnw -e verify
 
 before_install:
-
   - chmod +x mvnw
 
-script: mvn -e verify
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
-notifications:
-  email:
-    recipients:
-      - musin.idris@gmail.com
-    on_failure: always
-    on_success: change
+deploy:
+
+  provider: heroku
+  api_key: $HEROKU_KEY
+  app: ulmart-web-site
