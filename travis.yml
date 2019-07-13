@@ -1,6 +1,6 @@
 language: java
 
-jdk: oraclejdk12
+jdk: openjdk12
 
 script: ./mvnw -e verify
 
@@ -14,4 +14,4 @@ deploy:
 
   provider: heroku
   api_key: $HEROKU_KEY
-  app: ulmart-web-site
+  app:
