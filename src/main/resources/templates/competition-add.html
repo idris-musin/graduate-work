@@ -5,43 +5,31 @@
 
 <div data-th-replace="fragments/layout :: navbarFragment"></div>
 
-<div class="container">
+<div class="container" style="max-width: 1000px; min-height: 500px;">
     <div class="row">
-        <div class="col">
+        <div class="col" align="center">
+
             <h1>Добавьте фото</h1>
+
             <form data-th-action="@{/competitions/add-form}" enctype="multipart/form-data" method="post">
                 <div class="form-group">
-                    <label for="name">Название заметки</label>
-                    <input name="name" type="text" class="form-control" id="name">
+                    <label for="name"></label>
+                        <input name="name" type="text" class="form-control" id="name"
+                               placeholder="Введите название фото">
                 </div>
+
                 <div class="custom-file">
                     <input name="media" type="file" class="custom-file-input" id="media" required>
                     <label class="custom-file-label" for="media">Выберите файл...</label>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Вперед</button>
+                <button type="submit" class="btn" style="background-color: rgba(255, 0, 255, 1);">Вперед</button>
+
             </form>
         </div>
     </div>
 </div>
 
-<div class="w-container footer">
-    <div class="row">
-        <div class="col">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white">
-
-                <p class="pt-1 pb-0 mb-2">
-                    г. Казань, ул. Баумана, д.38
-                    <br>
-                    тел.: 8(843)111-11-11
-                    <br>
-                    &copy 2019
-                </p>
-
-            </nav>
-        </div>
-    </div>
-</div>
-
+<div data-th-replace="/fragments/layout :: footerFragment"></div>
 
 </body>
 </html>

@@ -5,48 +5,37 @@
 
 <div data-th-replace="fragments/layout :: navbarFragment"></div>
 
-<div class="container">
+<div class="container body" style="min-height: 500px;">
     <div class="row">
 
-        <div class="col-10">
+        <div class="col-sm-9">
+            <div class="mx-auto" style="max-width: 400px;">
+                <h3 style="color: rgba(0, 123, 255, 1);">Контакты</h3>
 
-            <h5>Контакты</h5>
+                <p>Адрес офиса в городе Казань:</p>
 
-            <p>Адрес офиса в городе Казань:</p>
+                <p>ул. Баумана, д.1, оф. 1</p>
 
-            <p>ул. Баумана, д.35, оф. 404</p>
+                <h5>Контактные телефоны:</h5>
 
-            <p>Телефоны:</p>
+                8 (843) 111-11-11
 
-            <p>8-987-111-11-11</p>
-            <p>8-843-244-44-44</p>
+                <p>Отдел по работе с клиентами: 8 (843) 999-99-99</p>
+                <p>Отдел продаж: 8 (843) 888-88-88</p>
 
+            </div>
         </div>
 
-        <div class="col">
-            <h5>Личный кабинет</h5>
+        <div class="col-sm-3" style="background-color: rgba(150, 200, 0, 1); border-radius: 0.55rem 0.55rem 0.55rem 0.55rem">
 
-            <form
-                    data-th-if="${#authorization.expression('isAuthenticated()')}"
-                    data-th-action="@{/logout}" method="post">
-                <button>Выйти</button>
-            </form>
-
-            <a data-th-if="${#authorization.expression('isAnonymous()')}"
-               data-th-href="@{/register}">Регистрация</a>
-
-            <a data-th-if="${#authorization.expression('isAnonymous()')}"
-               data-th-href="@{/login}">Войти</a>
-
-            <!-- когда проверяете hasRole префикс ROLE_ не пишется -->
-            <!-- в authority -> ROLE_ADMIN -->
-            <a data-th-if="${#authorization.expression('hasRole(''ADMIN'')')}"
-               data-th-href="@{/admin}">Панель управления</a>
+            <div data-th-replace="/fragments/layout :: hotlineFragment"></div>
 
         </div>
 
     </div>
 </div>
+
+<div data-th-replace="/fragments/layout :: footerFragment"></div>
 
 </body>
 </html>

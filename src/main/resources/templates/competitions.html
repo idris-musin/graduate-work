@@ -5,58 +5,54 @@
 
 <div data-th-replace="fragments/layout :: navbarFragment"></div>
 
-<div class="w-container body">
+<div class="container body">
     <div class="row">
 
-        <div class="col-10 col-xl-9 order-md-1 order-xl-1 pr-xl-0" data-th-each="competition: ${competitions}">
+        <div class="col-sm-9">
 
-            <div class="card mt-3 mb-3">
-                <img class="card-img-top" data-th-if="${competition.getType().name() == 'IMAGE'}"
-                     data-th-src="@{/media/{file}(file=${competition.getMedia()})}">
+            <div class="row">
+                <div class="col" align="center" data-th-each="competition: ${competitions}">
 
-                <div class="card-body">
-                    <h5 class="card-title">[[ ${competition.getName()} ]]</h5>
-                    <audio data-th-if="${competition.getType().name() == 'AUDIO'}"
-                           data-th-src="@{/media/{file}(file=${competition.getMedia()})}" controls></audio>
-                    <div class="embed-responsive embed-responsive-16by9"
-                         data-th-if="${competition.getType().name() == 'VIDEO'}">
-                        <video class="embed-responsive-item"
-                               data-th-src="@{/media/{file}(file=${competition.getMedia()})}" controls></video>
+                    <div class="card mt-3 mb-3">
+                        <img class="card-img-top" data-th-if="${competition.getType().name() == 'IMAGE'}"
+                             data-th-src="@{/media/{file}(file=${competition.getMedia()})}">
+
+                        <div class="card-body">
+                            <h5 class="card-title">[[ ${competition.getName()} ]]</h5>
+                            <audio data-th-if="${competition.getType().name() == 'AUDIO'}"
+                                   data-th-src="@{/media/{file}(file=${competition.getMedia()})}" controls></audio>
+                            <div class="embed-responsive embed-responsive-16by9"
+                                 data-th-if="${competition.getType().name() == 'VIDEO'}">
+                                <video class="embed-responsive-item"
+                                       data-th-src="@{/media/{file}(file=${competition.getMedia()})}" controls></video>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
             </div>
+
+            <div class="row">
+                <div class="col" align="center">
+                    <h3 class="mb-3" data-th-if="${competitions.size() == 0}">Добавьте фото для участия в конкурсе</h3>
+                    <a data-th-href="@{/competitions/add-form}" class="btn"
+                       style="background-color: rgba(255, 0, 255, 1);">Добавить</a>
+                </div>
+            </div>
         </div>
 
-    </div>
+        <div class="col-sm-3" style="background-color: rgba(150, 200, 0, 1); border-radius: 0.55rem 0.55rem 0.55rem 0.55rem">
 
-    <div class="row">
-        <div class="col" align="center">
-            <h3 class="mb-3" data-th-if="${competitions.size() == 0}">Добавьте фото для участия в конкурсе</h3>
-            <a data-th-href="@{/competitions/add-form}" class="btn btn-primary">Добавить</a>
+            <div data-th-replace="/fragments/layout :: hotlineFragment"></div>
+
         </div>
+
     </div>
 
 </div>
 
-<div class="w-container footer">
-    <div class="row">
-        <div class="col">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white">
-
-                <p class="pt-1 pb-0 mb-2">
-                    г. Казань, ул. Баумана, д.38
-                    <br>
-                    тел.: 8(843)111-11-11
-                    <br>
-                    &copy 2019
-                </p>
-
-            </nav>
-        </div>
-    </div>
-</div>
-
+<div data-th-replace="/fragments/layout :: footerFragment"></div>
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 package ru.itpark.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class NoteController {
         return "notes";
     }
 
-    //    @PreAuthorize("hasRole('ADMIN') || @noteService.isOwner(#id, principal.getId())")
+//    @PreAuthorize("hasRole('ADMIN') || @noteService.isOwner(#id, principal.getId())")
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable int id) {
         var note = service.findById(id);
@@ -29,19 +30,21 @@ public class NoteController {
         return "note";
     }
 
-    //    @PreAuthorize("hasRole('ADMIN') || @noteService.isOwner(#id, principal.getId())")
+    @PreAuthorize("hasRole('ADMIN') || @noteService.isOwner(#id, principal.getId())")
     @PostMapping("/{id}/remove")
     public String removeById(@PathVariable int id) {
         service.removeById(id);
         return "redirect:/notes";
     }
 
+    @PreAuthorize("hasRole('ADMIN') || @noteService.isOwner(#id, principal.getId())")
     @GetMapping("/add")
     public String addPage(Model model) {
         model.addAttribute("title", "Страница добавления новостей");
         return "note-add";
     }
 
+    @PreAuthorize("hasRole('ADMIN') || @noteService.isOwner(#id, principal.getId())")
     @PostMapping("/add")
     public String add(@ModelAttribute NoteAdd dto) {
         service.add(dto);

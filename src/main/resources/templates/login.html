@@ -1,19 +1,39 @@
 <!doctype html>
 <html lang="ru">
+
 <head data-th-replace="fragments/layout :: headFragment(title=${title})"></head>
+
 <body>
+
+<div data-th-replace="/fragments/layout :: navbarFragment"></div>
 
 <div data-th-if="error">
     [[ ${error} ]]
 </div>
+
 <div data-th-if="register">
-    Вы успешно зарегистрировались. Войдите, используя ваш логин и пароль.
+    <h5 align="center">Войдите, используя ваш логин и пароль.</h5>
 </div>
-<form data-th-action="@{/login}" method="post">
-    <input name="username" placeholder="Логин" required>
-    <input name="password" type="password" placeholder="Пароль" required>
-    <button>Вход</button>
-</form>
+
+<div class="container mx-auto" style="min-height: 500px; max-width: 500px;">
+
+    <form data-th-action="@{/login}" method="post">
+        <div class="form-group">
+            <label>
+                <input name="username" class="form-control" placeholder="Введите логин" required>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                <input name="password" class="form-control" type="password" placeholder="Ввведите пароль" required>
+            </label>
+        </div>
+        <button type="submit" class="btn" style="background-color: rgba(255, 0, 255, 1);">Вход</button>
+    </form>
+
+</div>
+
+<div data-th-replace="/fragments/layout :: footerFragment"></div>
 
 </body>
 </html>
