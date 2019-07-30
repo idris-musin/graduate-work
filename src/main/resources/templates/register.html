@@ -22,43 +22,42 @@
 
 <body>
 
-<div data-th-fragment="navbarFragment">
-    <div class="w-container header">
-        <div class="row">
-            <div class="col">
+<div class="w-container header">
+    <div class="row">
+        <div class="col">
 
-                <nav class="navbar navbar-expand-lg"
-                     style="background-color: rgba(0, 123, 255, 1); border-bottom-left-radius: 0.55rem;
+            <nav class="navbar navbar-expand-lg"
+                 style="background-color: rgba(0, 123, 255, 1); border-bottom-left-radius: 0.55rem;
                      border-bottom-right-radius: 0.55rem;">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link text-white" data-th-href="@{/index}">Главная</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" data-th-href="@{/notes}">Новости</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" data-th-href="@{/competitions}">Конкурсы</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" data-th-href="@{/contacts}">Контакты</a>
-                            </li>
-                        </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-white" data-th-href="@{/index}">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-th-href="@{/notes}">Новости</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-th-href="@{/competitions}">Конкурсы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-th-href="@{/contacts}">Контакты</a>
+                        </li>
+                    </ul>
 
-                    </div>
-                </nav>
+                </div>
+            </nav>
 
-            </div>
         </div>
     </div>
 </div>
+
 
 <div data-th-if="error">
     [[ ${error} ]]
@@ -93,7 +92,26 @@
 
 </div>
 
-<div data-th-replace="/fragments/layout :: footerFragment"></div>
+<div class="w-container footer">
+    <div class="row">
+        <div class="col">
+            <nav class="navbar navbar-expand-lg text-white mx-auto" style="background-color: rgba(0,123,255,1);
+                border-top-left-radius: 0.55rem; border-top-right-radius: 0.55rem;">
+
+                <div class="mx-auto" style="max-width: 200px;">
+                    <p class="pt-1 pb-0 mb-2" align="center">
+                        г. Казань, ул. Баумана, д.1
+                        <br>
+                        тел.: 8 (843) 111-11-11
+                        <br>
+                        &copy 2019
+                    </p>
+                </div>
+
+            </nav>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

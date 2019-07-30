@@ -20,40 +20,38 @@
 </head>
 <body>
 
-<div data-th-fragment="navbarFragment">
-    <div class="w-container header">
-        <div class="row">
-            <div class="col">
+<div class="w-container header">
+    <div class="row">
+        <div class="col">
 
-                <nav class="navbar navbar-expand-lg"
-                     style="background-color: rgba(0, 123, 255, 1); border-bottom-left-radius: 0.55rem;
+            <nav class="navbar navbar-expand-lg"
+                 style="background-color: rgba(0, 123, 255, 1); border-bottom-left-radius: 0.55rem;
                      border-bottom-right-radius: 0.55rem;">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link text-white" data-th-href="@{/index}">Главная</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" data-th-href="@{/notes}">Новости</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" data-th-href="@{/competitions}">Конкурсы</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" data-th-href="@{/contacts}">Контакты</a>
-                            </li>
-                        </ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-white" data-th-href="@{/index}">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-th-href="@{/notes}">Новости</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-th-href="@{/competitions}">Конкурсы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-th-href="@{/contacts}">Контакты</a>
+                        </li>
+                    </ul>
 
-                    </div>
-                </nav>
+                </div>
+            </nav>
 
-            </div>
         </div>
     </div>
 </div>
@@ -62,14 +60,6 @@
     <div class="row">
 
         <div class="col-sm-9" align="center">
-
-            <!--            <form data-th-action="@{/search}">-->
-            <!--                <input name="content" placeholder="Что ищем?" type="search" class="item-search"-->
-            <!--                       data-th-value="${content}">-->
-            <!--                <button class="waves-effect indigo btn" type="submit">Искать</button>-->
-            <!--            </form>-->
-
-            <!--            <h3 class="mt-3" data-th-if="${search}">Searching results for: [[ ${search} ]]</h3>-->
 
             <h1>Новости компании</h1>
 
@@ -87,14 +77,65 @@
         <div class="col-sm-3"
              style="background-color: rgba(150, 200, 0, 1); border-radius: 0.55rem 0.55rem 0.55rem 0.55rem">
 
-            <div data-th-replace="/fragments/layout :: hotlineFragment"></div>
+            <h4 class="card-title" align="center">Личный кабинет</h4>
+            <form
+                    data-th-if="${#authorization.expression('isAuthenticated()')}"
+                    data-th-action="@{/logout}" method="post">
+                <button class="btn active btn-block"
+                        style="background-color: rgba(255, 0, 255, 1);">
+                    Выйти
+                </button>
+            </form>
+
+            <br>
+            <a data-th-if="${#authorization.expression('isAnonymous()')}"
+               data-th-href="@{/register}" class="btn active btn-block" style="background-color: rgba(255, 0, 255, 1);"
+               role="button">
+                Регистрация
+            </a>
+
+            <a data-th-if="${#authorization.expression('isAnonymous()')}"
+               data-th-href="@{/login}" class="btn active btn-block" style="background-color: rgba(255, 0, 255, 1);"
+               role="button"
+               aria-pressed="true">
+                Войти
+            </a>
+
+            <br>
+            <h4>Горячая линия</h4>
+            <h5 class="card-subtitle mb-0">8 (800) 222-22-22</h5>
+            <p class="hl mt-1 mb-2">
+                <small>по вопросам качества топлива
+                    <br>и работы заправочных станций
+                    <br>(круглосуточно) звонок бесплатный
+                </small>
+            </p>
 
         </div>
 
     </div>
 </div>
 
-<div data-th-replace="/fragments/layout :: footerFragment"></div>
+<div class="w-container footer">
+    <div class="row">
+        <div class="col">
+            <nav class="navbar navbar-expand-lg text-white mx-auto" style="background-color: rgba(0,123,255,1);
+                border-top-left-radius: 0.55rem; border-top-right-radius: 0.55rem;">
+
+                <div class="mx-auto" style="max-width: 200px;">
+                    <p class="pt-1 pb-0 mb-2" align="center">
+                        г. Казань, ул. Баумана, д.1
+                        <br>
+                        тел.: 8 (843) 111-11-11
+                        <br>
+                        &copy 2019
+                    </p>
+                </div>
+
+            </nav>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
